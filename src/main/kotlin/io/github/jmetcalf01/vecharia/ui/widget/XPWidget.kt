@@ -8,6 +8,6 @@ import io.github.jmetcalf01.vecharia.render.Widget
 
 class XPWidget(private val player: Player) : Widget {
     override fun render(step: Timestep): Text {
-        return Utility.percentBar((player.currentXP.toFloat() / player.nextLevelXP), Color.YELLOW)
+        return Utility.percentBar((player.currentXP.toFloat() / player.nextLevelXP), 10, Color.YELLOW)
     }
 }

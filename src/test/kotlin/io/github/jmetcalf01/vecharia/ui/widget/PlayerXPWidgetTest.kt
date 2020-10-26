@@ -18,27 +18,27 @@ class PlayerXPWidgetTest {
         assertEquals(xpWidget.render(Timestep()).toString(), "[       ERROR!       ]")
 
         player.currentXP = 0
-        assertEquals(xpWidget.render(Timestep()).str, "[")
-        assertEquals(xpWidget.render(Timestep()).color, Color.GRAY)
-        assertEquals(xpWidget.render(Timestep()).children[0], Text("*".repeat(0), Color.YELLOW))
-        assertEquals(xpWidget.render(Timestep()).children[1], Text("*".repeat(20), Color.GRAY))
-        assertEquals(xpWidget.render(Timestep()).children[2], Text("]", Color.GRAY))
+        assertEquals("[", xpWidget.render(Timestep()).str)
+        assertEquals(Color.GRAY, xpWidget.render(Timestep()).color)
+        assertEquals(Text("*".repeat(0), Color.YELLOW), xpWidget.render(Timestep()).children[0])
+        assertEquals(Text("*".repeat(10), Color.GRAY), xpWidget.render(Timestep()).children[1])
+        assertEquals(Text("]", Color.GRAY), xpWidget.render(Timestep()).children[2])
 
         player.currentXP = 25
-        assertEquals(xpWidget.render(Timestep()).str, "[")
-        assertEquals(xpWidget.render(Timestep()).color, Color.GRAY)
-        assertEquals(xpWidget.render(Timestep()).children[0], Text("*".repeat(5), Color.YELLOW))
-        assertEquals(xpWidget.render(Timestep()).children[1], Text("*".repeat(15), Color.GRAY))
-        assertEquals(xpWidget.render(Timestep()).children[2], Text("]", Color.GRAY))
+        assertEquals("[", xpWidget.render(Timestep()).str)
+        assertEquals(Color.GRAY, xpWidget.render(Timestep()).color)
+        assertEquals(Text("*".repeat(2), Color.YELLOW), xpWidget.render(Timestep()).children[0])
+        assertEquals(Text("*".repeat(8), Color.GRAY), xpWidget.render(Timestep()).children[1])
+        assertEquals(Text("]", Color.GRAY), xpWidget.render(Timestep()).children[2])
 
         player.currentXP = 67
-        assertEquals(xpWidget.render(Timestep()).str, "[")
-        assertEquals(xpWidget.render(Timestep()).color, Color.GRAY)
-        assertEquals(xpWidget.render(Timestep()).children[0], Text("*".repeat(13), Color.YELLOW))
-        assertEquals(xpWidget.render(Timestep()).children[1], Text("*".repeat(7), Color.GRAY))
-        assertEquals(xpWidget.render(Timestep()).children[2], Text("]", Color.GRAY))
+        assertEquals("[", xpWidget.render(Timestep()).str)
+        assertEquals(Color.GRAY, xpWidget.render(Timestep()).color)
+        assertEquals(Text("*".repeat(6), Color.YELLOW), xpWidget.render(Timestep()).children[0])
+        assertEquals(Text("*".repeat(4), Color.GRAY), xpWidget.render(Timestep()).children[1])
+        assertEquals(Text("]", Color.GRAY), xpWidget.render(Timestep()).children[2])
 
         player.currentXP = 110
-        assertEquals(xpWidget.render(Timestep()).toString(), "[       ERROR!       ]")
+        assertEquals("[       ERROR!       ]", xpWidget.render(Timestep()).toString())
     }
 }

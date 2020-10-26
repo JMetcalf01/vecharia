@@ -20,16 +20,17 @@ object Utility {
      * @author Jonathan Metcalf
      *
      * @param percent the percent of the bar to be filled
+     * @param length the length of the bar in asterisks
      * @param color the color of the bar (or null if it changes from green to red)
      * @return the Text containing the bar
      */
-    fun percentBar(percent: Float, color: Color? = null): Text {
+    fun percentBar(percent: Float, length: Int, color: Color? = null): Text {
         if (percent < 0 || percent > 1) return Text("[",Color.GRAY).append(Text.cjust(Text("ERROR!", Color.RED), 20), Color.RED).append(Text("]", Color.GRAY))
 
-        val coloredBars = (20 * percent).toInt()
+        val coloredBars = (length * percent).toInt()
         return Text("[", Color.GRAY)
             .append(BAR_CHAR.repeat(coloredBars), color ?: getHealthColor(percent))
-            .append((if (color != null) BAR_CHAR else BAR_CLEAR).repeat(20 - coloredBars), Color.GRAY)
+            .append((if (color != null) BAR_CHAR else BAR_CLEAR).repeat(length - coloredBars), Color.GRAY)
             .append("]", Color.GRAY)
     }
 

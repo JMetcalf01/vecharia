@@ -7,6 +7,6 @@ import io.github.jmetcalf01.vecharia.render.Widget
 
 class HPWidget(private val entity: Entity) : Widget {
     override fun render(step: Timestep): Text {
-        return Utility.percentBar(entity.health / entity.maxHealth)
+        return Utility.percentBar(entity.health / entity.maxHealth, 20)
     }
 }
