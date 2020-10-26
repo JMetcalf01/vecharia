@@ -27,12 +27,11 @@ object Utility {
         // TODO add padding function in Text to replace below
         if (percent < 0 || percent > 1) return Text("       ERROR!       ", Color.RED)
 
-        val text = Text("[", Color.GRAY)
         val coloredBars = (20 * percent).toInt()
-        text.append(Text(BAR_CHAR.repeat(coloredBars), color ?: getHealthColor(percent)))
-        text.append(Text((if (color != null) BAR_CHAR else BAR_CLEAR).repeat(20 - coloredBars), Color.GRAY))
-        text.append(Text("]", Color.GRAY))
-        return text
+        return Text("[", Color.GRAY)
+            .append(Text(BAR_CHAR.repeat(coloredBars), color ?: getHealthColor(percent)))
+            .append(Text((if (color != null) BAR_CHAR else BAR_CLEAR).repeat(20 - coloredBars), Color.GRAY))
+            .append(Text("]", Color.GRAY))
     }
 
     /**

@@ -28,6 +28,9 @@ fun main() {
     player.health = 39.0f
     textRenderer.draw(hpWidget.render(Timestep()))
 
+    player.health = -1.0f
+    textRenderer.draw(hpWidget.render(Timestep()))
+
     println()
     textRenderer.draw(xpWidget.render(Timestep()))
 
