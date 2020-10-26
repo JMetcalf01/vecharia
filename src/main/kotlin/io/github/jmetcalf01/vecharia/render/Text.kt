@@ -8,8 +8,8 @@ class Text(var str: String, var color: Color = Color.WHITE) {
     fun append(text: Any, color: Color) = append(Text(text.toString(), color))
 
     fun append(text: Text): Text {
-        children.add(text);
-        return this;
+        children.add(text)
+        return this
     }
 
     override fun toString(): String {
@@ -20,5 +20,8 @@ class Text(var str: String, var color: Color = Color.WHITE) {
 enum class Color {
     WHITE,
     GRAY,
-
+    RED,
+    YELLOW,
+    GREEN,
+    CLEAR
 }
