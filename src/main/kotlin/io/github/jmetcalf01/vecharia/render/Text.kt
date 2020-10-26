@@ -9,6 +9,14 @@ class Text(var str: String, var color: Color = Color.WHITE) {
         fun ljust(text: Text, length: Int): Text = Text(EMPTY_CHAR.repeat((length - text.str.length).coerceAtLeast(0))).append(text)
 
         fun rjust(text: Text, length: Int): Text = text.append(Text(EMPTY_CHAR.repeat((length - text.str.length).coerceAtLeast(0))))
+
+        fun cjust(text: Text, length: Int): Text {
+            val rem = (length - text.str.length).coerceAtLeast(0)
+            val pre = if (rem % 2 == 0) rem / 2 else (rem / 2) + 1
+            return Text(EMPTY_CHAR.repeat(pre))
+                    .append(text)
+                    .append(EMPTY_CHAR.repeat(rem - pre))
+        }
     }
 
     private val _children: MutableList<Text> = mutableListOf()
