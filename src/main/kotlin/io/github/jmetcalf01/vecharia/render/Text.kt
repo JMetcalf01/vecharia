@@ -30,9 +30,11 @@ class Text(var str: String, var color: Color = Color.WHITE) {
 
             val flattened = Text(text.str, text.color)
             text.children.map(Text::deep).flatten().forEach(flattened::append)
-
             return flattened;
         }
+
+        @TestOnly
+        fun parent_t(text: Text) = Text(text.str, text.color)
     }
 
     private val _children: MutableList<Text> = mutableListOf()
