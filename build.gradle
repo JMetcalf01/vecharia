@@ -10,16 +10,19 @@ repositories {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.0-M1'
 
     // Good
     implementation 'com.google.code.gson:gson:2.8.6'
 
     // Terrible
-    api "com.badlogicgames.gdx:gdx:1.9.11"
-    api "com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.11"
-    api "com.badlogicgames.gdx:gdx-platform:1.9.11:natives-desktop"
-    api "com.badlogicgames.gdx:gdx-freetype:1.9.11"
-    api "com.badlogicgames.gdx:gdx-freetype-platform:1.9.11:natives-desktop"
+    api 'com.badlogicgames.gdx:gdx:1.9.11'
+    api 'com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.11'
+    api 'com.badlogicgames.gdx:gdx-platform:1.9.11:natives-desktop'
+    api 'com.badlogicgames.gdx:gdx-freetype:1.9.11'
+    api 'com.badlogicgames.gdx:gdx-freetype-platform:1.9.11:natives-desktop'
+
+    // JUnit
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.7.0'
 }
