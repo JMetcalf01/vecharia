@@ -16,4 +16,24 @@ class Text(var str: String, var color: Color = Color.WHITE) {
     override fun toString(): String {
         return str + children.stream().map(Text::toString).collect(Collectors.joining())
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Text
+
+        if (str != other.str) return false
+        if (color != other.color) return false
+        if (children != other.children) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = str.hashCode()
+        result = 31 * result + color.hashCode()
+        result = 31 * result + children.hashCode()
+        return result
+    }
 }

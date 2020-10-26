@@ -6,5 +6,5 @@ enum class Color {
     RED,
     YELLOW,
     GREEN,
-    CLEAR
+    RESET
 }

@@ -6,6 +6,7 @@ import io.github.jmetcalf01.vecharia.render.Text
 object Utility {
 
     private const val BAR_CHAR: String = "*"
+    private const val BAR_CLEAR: String = " "
 
     /**
      * This method prints a bar in the format of:
@@ -23,10 +24,13 @@ object Utility {
      * @return the Text containing the bar
      */
     fun percentBar(percent: Float, color: Color? = null): Text {
+        // TODO add padding function in Text to replace below
+        if (percent < 0 || percent > 1) return Text("       ERROR!       ", Color.RED)
+
         val text = Text("[", Color.GRAY)
         val coloredBars = (20 * percent).toInt()
         text.append(Text(BAR_CHAR.repeat(coloredBars), color ?: getHealthColor(percent)))
-        text.append(Text(BAR_CHAR.repeat(20 - coloredBars), if (color != null) Color.GRAY else Color.CLEAR))
+        text.append(Text((if (color != null) BAR_CHAR else BAR_CLEAR).repeat(20 - coloredBars), Color.GRAY))
         text.append(Text("]", Color.GRAY))
         return text
     }
