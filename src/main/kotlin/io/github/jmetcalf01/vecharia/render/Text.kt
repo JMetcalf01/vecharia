@@ -3,6 +3,18 @@ package io.github.jmetcalf01.vecharia.render
 import java.util.stream.Collectors
 
 class Text(var str: String, var color: Color = Color.WHITE) {
+    companion object {
+        private const val EMPTY_CHAR: String = " "
+
+        fun ljust(text: Text, length: Int): Text
+                = Text(EMPTY_CHAR.repeat((length - text.str.length).coerceAtLeast(0))).append(text)
+
+        fun rjust(text: Text, length: Int): Text
+                = text.append(Text(EMPTY_CHAR.repeat((length - text.str.length).coerceAtLeast(0))))
+    }
+
+
+class Text(var str: String, var color: Color = Color.WHITE) {
     private val _children: MutableList<Text> = mutableListOf()
     val children: List<Text> = _children
 
@@ -37,3 +49,8 @@ class Text(var str: String, var color: Color = Color.WHITE) {
         return result
     }
 }
+
+interface TextRenderer {
+    fun draw(text: Text)
+}
+

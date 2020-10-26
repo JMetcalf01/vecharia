@@ -30,7 +30,7 @@ object Utility {
         val text = Text("[", Color.GRAY)
         val coloredBars = (20 * percent).toInt()
         text.append(Text(BAR_CHAR.repeat(coloredBars), color ?: getHealthColor(percent)))
-        text.append(Text((if (color != null) BAR_CHAR else BAR_CLEAR).repeat(20 - coloredBars), Color.GRAY))
+        text.append(Text(BAR_CHAR.repeat(20 - coloredBars), if (color != null) Color.GRAY else Color.RESET))
         text.append(Text("]", Color.GRAY))
         return text
     }
