@@ -10,43 +10,76 @@ import org.junit.jupiter.api.Test
 class HPWidgetTest {
 
     @Test
-    fun testHealthColors() {
+    fun testTooMuchHP() {
         val player = Player()
         val hpWidget = HPWidget(player)
         player.maxHealth = 100.0f
-
         player.health = 110.0f
-        assertEquals("[       ERROR!       ]", hpWidget.render(Timestep()).toString())
+        assertEquals("HP[       ERROR!       ]", hpWidget.render(Timestep()).toString())
+    }
 
+    @Test
+    fun testGreenHealth() {
+        val player = Player()
+        val hpWidget = HPWidget(player)
+        player.maxHealth = 100.0f
         player.health = 100.0f
-        assertEquals("[", hpWidget.render(Timestep()).str)
-        assertEquals(Color.GRAY, hpWidget.render(Timestep()).color)
-        assertEquals(Text("*".repeat(20), Color.GREEN), hpWidget.render(Timestep()).children[0])
-        assertEquals(Text("", Color.GRAY), hpWidget.render(Timestep()).children[1])
-        assertEquals(Text("]", Color.GRAY), hpWidget.render(Timestep()).children[2])
+        val test = Text.flatten_t(hpWidget.render(Timestep()))
+        assertEquals(Text("HP", Color.WHITE), Text.parent_t(test))
+        assertEquals(Text("[", Color.GRAY), test.children[0])
+        assertEquals(Text("*".repeat(20), Color.GREEN), test.children[1])
+        assertEquals(Text(" ".repeat(0), Color.GRAY), test.children[2])
+        assertEquals(Text("]", Color.GRAY), test.children[3])
+    }
 
+    @Test
+    fun testYellowHealth() {
+        val player = Player()
+        val hpWidget = HPWidget(player)
+        player.maxHealth = 100.0f
         player.health = 69.0f
-        assertEquals("[", hpWidget.render(Timestep()).str)
-        assertEquals(Color.GRAY, hpWidget.render(Timestep()).color)
-        assertEquals(Text("*".repeat(13), Color.YELLOW), hpWidget.render(Timestep()).children[0])
-        assertEquals(Text(" ".repeat(7), Color.GRAY), hpWidget.render(Timestep()).children[1])
-        assertEquals(Text("]", Color.GRAY), hpWidget.render(Timestep()).children[2])
+        val test = Text.flatten_t(hpWidget.render(Timestep()))
+        assertEquals(Text("HP", Color.WHITE), Text.parent_t(test))
+        assertEquals(Text("[", Color.GRAY), test.children[0])
+        assertEquals(Text("*".repeat(13), Color.YELLOW), test.children[1])
+        assertEquals(Text(" ".repeat(7), Color.GRAY), test.children[2])
+        assertEquals(Text("]", Color.GRAY), test.children[3])
+    }
 
+    @Test
+    fun testRedHealth() {
+        val player = Player()
+        val hpWidget = HPWidget(player)
+        player.maxHealth = 100.0f
         player.health = 39.0f
-        assertEquals("[", hpWidget.render(Timestep()).str)
-        assertEquals(Color.GRAY, hpWidget.render(Timestep()).color)
-        assertEquals(Text("*".repeat(7), Color.RED), hpWidget.render(Timestep()).children[0])
-        assertEquals(Text(" ".repeat(13), Color.GRAY), hpWidget.render(Timestep()).children[1])
-        assertEquals(Text("]", Color.GRAY), hpWidget.render(Timestep()).children[2])
+        val test = Text.flatten_t(hpWidget.render(Timestep()))
+        assertEquals(Text("HP", Color.WHITE), Text.parent_t(test))
+        assertEquals(Text("[", Color.GRAY), test.children[0])
+        assertEquals(Text("*".repeat(7), Color.RED), test.children[1])
+        assertEquals(Text(" ".repeat(13), Color.GRAY), test.children[2])
+        assertEquals(Text("]", Color.GRAY), test.children[3])
+    }
 
+    @Test
+    fun testZeroHealth() {
+        val player = Player()
+        val hpWidget = HPWidget(player)
+        player.maxHealth = 100.0f
         player.health = 0.0f
-        assertEquals("[", hpWidget.render(Timestep()).str)
-        assertEquals(Color.GRAY, hpWidget.render(Timestep()).color)
-        assertEquals(Text("*".repeat(0), Color.RED), hpWidget.render(Timestep()).children[0])
-        assertEquals(Text(" ".repeat(20), Color.GRAY), hpWidget.render(Timestep()).children[1])
-        assertEquals(Text("]", Color.GRAY), hpWidget.render(Timestep()).children[2])
+        val test = Text.flatten_t(hpWidget.render(Timestep()))
+        assertEquals(Text("HP", Color.WHITE), Text.parent_t(test))
+        assertEquals(Text("[", Color.GRAY), test.children[0])
+        assertEquals(Text("*".repeat(0), Color.RED), test.children[1])
+        assertEquals(Text(" ".repeat(20), Color.GRAY), test.children[2])
+        assertEquals(Text("]", Color.GRAY), test.children[3])
+    }
 
+    @Test
+    fun testNegHealth() {
+        val player = Player()
+        val hpWidget = HPWidget(player)
+        player.maxHealth = 100.0f
         player.health = -10.0f
-        assertEquals("[       ERROR!       ]", hpWidget.render(Timestep()).toString())
+        assertEquals("HP[       ERROR!       ]", hpWidget.render(Timestep()).toString())
     }
 }

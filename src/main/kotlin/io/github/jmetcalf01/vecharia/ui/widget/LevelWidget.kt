@@ -9,7 +9,7 @@ import io.github.jmetcalf01.vecharia.render.Widget
 
 class LevelWidget(private val entity: Entity) : Widget {
     override fun render(step: Timestep): Text {
-        if (entity.level < 0 || entity.level > 999) return Text("Level ", Color.GRAY).append(Text("ERR", Color.RED))
+        if (entity.level < 0 || entity.level > 999) return Text("Level ", Color.GRAY).append("ERR", Color.RED)
         return Text("Level ", Color.GRAY).append(entity.level, Color.WHITE)
     }
 }

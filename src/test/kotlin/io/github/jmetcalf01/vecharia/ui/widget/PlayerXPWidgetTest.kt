@@ -10,35 +10,57 @@ import org.junit.jupiter.api.Test
 class PlayerXPWidgetTest {
 
     @Test
-    fun testXP() {
+    fun testNegativeXP() {
         val player = Player()
-        val xpWidget = XPWidget(player)
-
+        val xpWidget = PlayerXPWidget(player)
         player.currentXP = -10
-        assertEquals(xpWidget.render(Timestep()).toString(), "[       ERROR!       ]")
+        assertEquals("XP[  ERROR!  ]", xpWidget.render(Timestep()).toString())
+    }
 
+    @Test
+    fun testZeroXP() {
+        val player = Player()
+        val xpWidget = PlayerXPWidget(player)
         player.currentXP = 0
-        assertEquals("[", xpWidget.render(Timestep()).str)
-        assertEquals(Color.GRAY, xpWidget.render(Timestep()).color)
-        assertEquals(Text("*".repeat(0), Color.YELLOW), xpWidget.render(Timestep()).children[0])
-        assertEquals(Text("*".repeat(10), Color.GRAY), xpWidget.render(Timestep()).children[1])
-        assertEquals(Text("]", Color.GRAY), xpWidget.render(Timestep()).children[2])
+        val test = Text.flatten_t(xpWidget.render(Timestep()))
+        assertEquals(Text("XP", Color.WHITE), Text.parent_t(test))
+        assertEquals(Text("[", Color.GRAY), test.children[0])
+        assertEquals(Text("*".repeat(0), Color.YELLOW), test.children[1])
+        assertEquals(Text("*".repeat(10), Color.GRAY), test.children[2])
+        assertEquals(Text("]", Color.GRAY), test.children[3])
+    }
 
+    @Test
+    fun testLowXP() {
+        val player = Player()
+        val xpWidget = PlayerXPWidget(player)
         player.currentXP = 25
-        assertEquals("[", xpWidget.render(Timestep()).str)
-        assertEquals(Color.GRAY, xpWidget.render(Timestep()).color)
-        assertEquals(Text("*".repeat(2), Color.YELLOW), xpWidget.render(Timestep()).children[0])
-        assertEquals(Text("*".repeat(8), Color.GRAY), xpWidget.render(Timestep()).children[1])
-        assertEquals(Text("]", Color.GRAY), xpWidget.render(Timestep()).children[2])
+        val test = Text.flatten_t(xpWidget.render(Timestep()))
+        assertEquals(Text("XP", Color.WHITE), Text.parent_t(test))
+        assertEquals(Text("[", Color.GRAY), test.children[0])
+        assertEquals(Text("*".repeat(2), Color.YELLOW), test.children[1])
+        assertEquals(Text("*".repeat(8), Color.GRAY), test.children[2])
+        assertEquals(Text("]", Color.GRAY), test.children[3])
+    }
 
+    @Test
+    fun testHighXP() {
+        val player = Player()
+        val xpWidget = PlayerXPWidget(player)
         player.currentXP = 67
-        assertEquals("[", xpWidget.render(Timestep()).str)
-        assertEquals(Color.GRAY, xpWidget.render(Timestep()).color)
-        assertEquals(Text("*".repeat(6), Color.YELLOW), xpWidget.render(Timestep()).children[0])
-        assertEquals(Text("*".repeat(4), Color.GRAY), xpWidget.render(Timestep()).children[1])
-        assertEquals(Text("]", Color.GRAY), xpWidget.render(Timestep()).children[2])
+        val t3 = Text.flatten_t(xpWidget.render(Timestep()))
+        assertEquals(Text("XP", Color.WHITE), Text.parent_t(t3))
+        assertEquals(Text("[", Color.GRAY), t3.children[0])
+        assertEquals(Text("*".repeat(6), Color.YELLOW), t3.children[1])
+        assertEquals(Text("*".repeat(4), Color.GRAY), t3.children[2])
+        assertEquals(Text("]", Color.GRAY), t3.children[3])
+    }
 
+    @Test
+    fun testTooMuchXP() {
+        val player = Player()
+        val xpWidget = PlayerXPWidget(player)
         player.currentXP = 110
-        assertEquals("[       ERROR!       ]", xpWidget.render(Timestep()).toString())
+        assertEquals("XP[  ERROR!  ]", xpWidget.render(Timestep()).toString())
     }
 }

@@ -20,7 +20,7 @@ object TerminalColor {
             GRAY to ANSI_WHITE,
             RED to ANSI_RED,
             YELLOW to ANSI_YELLOW,
-            GREEN to ANSI_GREEN,
+            GREEN to ANSI_GREEN
     )
 
     fun convert(color: Color): String = adapter[color] ?: ANSI_RESET

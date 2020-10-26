@@ -13,17 +13,31 @@ class LevelWidgetTest {
     fun testLevel() {
         val player = Player()
         val levelWidget = LevelWidget(player)
-
         player.level = -1
-        assertEquals(Text("Level ", Color.GRAY).append(Text("ERR", Color.RED)), levelWidget.render(Timestep()))
+        assertEquals(Text("Level ", Color.GRAY).append("ERR", Color.RED), levelWidget.render(Timestep()))
+    }
 
+    @Test
+    fun testLowLevel() {
+        val player = Player()
+        val levelWidget = LevelWidget(player)
         player.level = 1
-        assertEquals(Text("Level ", Color.GRAY).append(Text("1", Color.WHITE)), levelWidget.render(Timestep()))
+        assertEquals(Text("Level ", Color.GRAY).append("1", Color.WHITE), levelWidget.render(Timestep()))
+    }
 
+    @Test
+    fun testHighLevel() {
+        val player = Player()
+        val levelWidget = LevelWidget(player)
         player.level = 100
-        assertEquals(Text("Level ", Color.GRAY).append(Text("100", Color.WHITE)), levelWidget.render(Timestep()))
+        assertEquals(Text("Level ", Color.GRAY).append("100", Color.WHITE), levelWidget.render(Timestep()))
+    }
 
+    @Test
+    fun testTooHighLevel() {
+        val player = Player()
+        val levelWidget = LevelWidget(player)
         player.level = 1000
-        assertEquals(Text("Level ", Color.GRAY).append(Text("ERR", Color.RED)), levelWidget.render(Timestep()))
+        assertEquals(Text("Level ", Color.GRAY).append("ERR", Color.RED), levelWidget.render(Timestep()))
     }
 }
