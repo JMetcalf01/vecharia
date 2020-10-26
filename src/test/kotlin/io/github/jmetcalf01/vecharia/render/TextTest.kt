@@ -24,4 +24,22 @@ class TextTest {
         val t2 = Text("Hello, ").append("World")
         assertEquals("Hello, World", t2.toString())
     }
+
+    @Test
+    fun testLeftJustify() {
+        //todo
+        assertTrue(true)
+    }
+
+    @Test
+    fun testRightJustify() {
+        //todo
+        assertTrue(true)
+    }
+
+    @Test
+    fun testCenterJustify() {
+        //todo
+        assertTrue(true)
+    }
 }

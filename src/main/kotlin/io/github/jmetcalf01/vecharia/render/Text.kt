@@ -1,5 +1,6 @@
 package io.github.jmetcalf01.vecharia.render
 
+import org.jetbrains.annotations.TestOnly
 import java.util.stream.Collectors
 
 class Text(var str: String, var color: Color = Color.WHITE) {
@@ -16,6 +17,21 @@ class Text(var str: String, var color: Color = Color.WHITE) {
             return Text(EMPTY_CHAR.repeat(pre))
                     .append(text)
                     .append(EMPTY_CHAR.repeat(rem - pre))
+        }
+
+        @TestOnly
+        fun flatten_t(text: Text): Text {
+            fun Text.deep(): List<Text> {
+                val all = mutableListOf<Text>()
+                all.add(Text(str, color))
+                all.addAll(children.map(Text::deep).flatten())
+                return all
+            }
+
+            val flattened = Text(text.str, text.color)
+            text.children.map(Text::deep).flatten().forEach(flattened::append)
+
+            return flattened;
         }
     }
 

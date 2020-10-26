@@ -16,8 +16,8 @@ private const val ANSI_RESET    = "\u001B[0m"
 object TerminalColor {
     private val adapter: Map<Color, String> = mapOf(
             RESET to ANSI_RESET,
-            WHITE to ANSI_WHITE,
-            GRAY to ANSI_BLACK,
+            WHITE to ANSI_BLACK,
+            GRAY to ANSI_WHITE,
             RED to ANSI_RED,
             YELLOW to ANSI_YELLOW,
             GREEN to ANSI_GREEN,
