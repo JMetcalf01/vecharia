@@ -24,8 +24,7 @@ object Utility {
      * @return the Text containing the bar
      */
     fun percentBar(percent: Float, color: Color? = null): Text {
-        // TODO add padding function in Text to replace below
-        if (percent < 0 || percent > 1) return Text("       ERROR!       ", Color.RED)
+        if (percent < 0 || percent > 1) return Text("[",Color.GRAY).append(Text.cjust(Text("ERROR!", Color.RED), 20), Color.RED).append(Text("]", Color.GRAY))
 
         val coloredBars = (20 * percent).toInt()
         return Text("[", Color.GRAY)

@@ -5,13 +5,13 @@ import io.github.jmetcalf01.vecharia.render.TextRenderer
 import io.github.jmetcalf01.vecharia.render.Timestep
 import io.github.jmetcalf01.vecharia.render.platform.terminal.TerminalTextRenderer
 import io.github.jmetcalf01.vecharia.ui.widget.HPWidget
-import io.github.jmetcalf01.vecharia.ui.widget.PlayerLevelWidget
+import io.github.jmetcalf01.vecharia.ui.widget.LevelWidget
 import io.github.jmetcalf01.vecharia.ui.widget.XPWidget
 
 fun main() {
     val textRenderer: TextRenderer = TerminalTextRenderer()
     val player = Player()
-    val levelWidget = PlayerLevelWidget(player)
+    val levelWidget = LevelWidget(player)
     val hpWidget = HPWidget(player)
     val xpWidget = XPWidget(player)
     player.maxHealth = 100.0f

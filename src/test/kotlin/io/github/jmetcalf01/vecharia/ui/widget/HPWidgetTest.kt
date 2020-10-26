@@ -16,8 +16,7 @@ class HPWidgetTest {
         player.maxHealth = 100.0f
 
         player.health = 110.0f
-        assertEquals(hpWidget.render(Timestep()).str, "       ERROR!       ")
-        assertEquals(hpWidget.render(Timestep()).color, Color.RED)
+        assertEquals(hpWidget.render(Timestep()).toString(), "[       ERROR!       ]")
 
         player.health = 100.0f
         assertEquals(hpWidget.render(Timestep()).str, "[")
@@ -48,7 +47,6 @@ class HPWidgetTest {
         assertEquals(hpWidget.render(Timestep()).children[2], Text("]", Color.GRAY))
 
         player.health = -10.0f
-        assertEquals(hpWidget.render(Timestep()).str, "       ERROR!       ")
-        assertEquals(hpWidget.render(Timestep()).color, Color.RED)
+        assertEquals(hpWidget.render(Timestep()).toString(), "[       ERROR!       ]")
     }
 }
