@@ -11,7 +11,7 @@ object GdxColor {
             Color.GRAY to _Color.GRAY,
             Color.RED to _Color.RED,
             Color.YELLOW to _Color.YELLOW,
-            Color.GREEN to _Color.GREEN,
+            Color.GREEN to _Color.GREEN
     )
 
     fun convert(color: Color): _Color = adapter[color] ?: _Color.WHITE

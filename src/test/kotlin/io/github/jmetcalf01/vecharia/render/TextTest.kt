@@ -27,19 +27,19 @@ class TextTest {
 
     @Test
     fun testLeftJustify() {
-        //todo
-        assertTrue(true)
+        val test = Text.ljust(Text("Hello World"), 15)
+        assertEquals("    Hello World", test.toString())
     }
 
     @Test
     fun testRightJustify() {
-        //todo
-        assertTrue(true)
+        val test = Text.rjust(Text("Hello World"), 15)
+        assertEquals("Hello World    ", test.toString())
     }
 
     @Test
     fun testCenterJustify() {
-        //todo
-        assertTrue(true)
+        val test = Text.cjust(Text("Hello World"), 15)
+        assertEquals("  Hello World  ", test.toString())
     }
 }
