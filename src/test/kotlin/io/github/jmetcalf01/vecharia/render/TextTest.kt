@@ -28,13 +28,13 @@ class TextTest {
     @Test
     fun testLeftJustify() {
         val test = Text.ljust(Text("Hello World"), 15)
-        assertEquals("    Hello World", test.toString())
+        assertEquals("Hello World    ", test.toString())
     }
 
     @Test
     fun testRightJustify() {
         val test = Text.rjust(Text("Hello World"), 15)
-        assertEquals("Hello World    ", test.toString())
+        assertEquals("    Hello World", test.toString())
     }
 
     @Test

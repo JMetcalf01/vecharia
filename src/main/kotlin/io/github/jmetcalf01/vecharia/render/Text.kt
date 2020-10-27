@@ -7,12 +7,12 @@ class Text(var str: String, var color: Color = Color.WHITE) {
     companion object {
         private const val EMPTY_CHAR: String = " "
 
-        fun ljust(text: Text, length: Int): Text = Text(EMPTY_CHAR.repeat((length - text.toString().length).coerceAtLeast(0))).append(text)
+        fun ljust(text: Text, length: Int): Text = text.append(Text(EMPTY_CHAR.repeat((length - text.length).coerceAtLeast(0))))
 
-        fun rjust(text: Text, length: Int): Text = text.append(Text(EMPTY_CHAR.repeat((length - text.toString().length).coerceAtLeast(0))))
+        fun rjust(text: Text, length: Int): Text = Text(EMPTY_CHAR.repeat((length - text.length).coerceAtLeast(0))).append(text)
 
         fun cjust(text: Text, length: Int): Text {
-            val rem = (length - text.toString().length).coerceAtLeast(0)
+            val rem = (length - text.length).coerceAtLeast(0)
             val pre = if (rem % 2 == 0) rem / 2 else (rem / 2) + 1
             return Text(EMPTY_CHAR.repeat(pre))
                     .append(text)
@@ -39,6 +39,9 @@ class Text(var str: String, var color: Color = Color.WHITE) {
 
     private val _children: MutableList<Text> = mutableListOf()
     val children: List<Text> = _children
+
+    val length: Int
+        get() = str.length + children.stream().mapToInt(Text::length).sum()
 
     fun append(text: Any, color: Color = Color.WHITE) = append(Text(text.toString(), color))
 
