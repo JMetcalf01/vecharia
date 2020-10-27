@@ -7,12 +7,12 @@ class Text(var str: String, var color: Color = Color.WHITE) {
     companion object {
         private const val EMPTY_CHAR: String = " "
 
-        fun ljust(text: Text, length: Int): Text = Text(EMPTY_CHAR.repeat((length - text.str.length).coerceAtLeast(0))).append(text)
+        fun ljust(text: Text, length: Int): Text = Text(EMPTY_CHAR.repeat((length - text.toString().length).coerceAtLeast(0))).append(text)
 
-        fun rjust(text: Text, length: Int): Text = text.append(Text(EMPTY_CHAR.repeat((length - text.str.length).coerceAtLeast(0))))
+        fun rjust(text: Text, length: Int): Text = text.append(Text(EMPTY_CHAR.repeat((length - text.toString().length).coerceAtLeast(0))))
 
         fun cjust(text: Text, length: Int): Text {
-            val rem = (length - text.str.length).coerceAtLeast(0)
+            val rem = (length - text.toString().length).coerceAtLeast(0)
             val pre = if (rem % 2 == 0) rem / 2 else (rem / 2) + 1
             return Text(EMPTY_CHAR.repeat(pre))
                     .append(text)
@@ -30,7 +30,7 @@ class Text(var str: String, var color: Color = Color.WHITE) {
 
             val flattened = Text(text.str, text.color)
             text.children.map(Text::deep).flatten().forEach(flattened::append)
-            return flattened;
+            return flattened
         }
 
         @TestOnly

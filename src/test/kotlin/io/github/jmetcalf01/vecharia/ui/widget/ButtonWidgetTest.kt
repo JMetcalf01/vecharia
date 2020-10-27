@@ -9,25 +9,25 @@ class ButtonWidgetTest {
 
     @Test
     fun testBlank() {
-        val buttonWidget = ButtonWidget(Text(""))
+        val buttonWidget = ButtonWidget(Text(""), Text(""))
         assertEquals("[ERROR!]", buttonWidget.render(Timestep()).toString())
     }
 
     @Test
     fun testBlankWithLength() {
-        val buttonWidget = ButtonWidget(Text(""), 20)
+        val buttonWidget = ButtonWidget(Text(""), Text(""),20)
         assertEquals("[       ERROR!       ]", buttonWidget.render(Timestep()).toString())
     }
 
     @Test
     fun testGoodFit() {
-        val buttonWidget = ButtonWidget(Text("Test"))
-        assertEquals("[Test]", buttonWidget.render(Timestep()).toString())
+        val buttonWidget = ButtonWidget(Text("Test"), Text("T"))
+        assertEquals("[Test (T)]", buttonWidget.render(Timestep()).toString())
     }
 
     @Test
     fun testMoreSpaces() {
-        val buttonWidget = ButtonWidget(Text("Test"), 10)
-        assertEquals("[   Test   ]", buttonWidget.render(Timestep()).toString())
+        val buttonWidget = ButtonWidget(Text("Test"), Text("T"), 12)
+        assertEquals("[  Test (T)  ]", buttonWidget.render(Timestep()).toString())
     }
 }
