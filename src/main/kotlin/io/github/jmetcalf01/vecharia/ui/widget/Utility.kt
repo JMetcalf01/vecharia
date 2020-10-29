@@ -37,17 +37,17 @@ object Utility {
     /**
      * Returns a color based on the percent of health.
      *
-     * Above 70% is Green
-     * 40-70% is Yellow
-     * Below 40% is Red
+     * 70% - 100% is Green
+     * 40% - 70% is Yellow
+     * 0%  - 40% is Red
      *
      * @param percent
      * @return
      */
     private fun getHealthColor(percent: Float): Color {
         return when {
-            percent > 0.7 -> Color.GREEN
-            percent > 0.4 -> Color.YELLOW
+            percent >= 0.7 -> Color.GREEN
+            percent >= 0.4 -> Color.YELLOW
             else -> Color.RED
         }
     }
