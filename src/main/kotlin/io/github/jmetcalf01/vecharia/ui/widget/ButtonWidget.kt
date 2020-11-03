@@ -20,6 +20,8 @@ class ButtonWidget(private val text: Text, private val keys: Text, private val m
     /**
      * Renders the text as shown above.
      *
+     * @author Jonathan Metcalf
+     *
      * @param step the Timestep object
      * @return the text representation of the button
      */

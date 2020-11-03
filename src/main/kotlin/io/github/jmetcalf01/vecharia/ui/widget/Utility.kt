@@ -41,8 +41,10 @@ object Utility {
      * 40% - 70% is Yellow
      * 0%  - 40% is Red
      *
-     * @param percent
-     * @return
+     * @author Jonathan Metcalf
+     *
+     * @param percent the percent of health
+     * @return the color associated with that percent
      */
     private fun getHealthColor(percent: Float): Color {
         return when {

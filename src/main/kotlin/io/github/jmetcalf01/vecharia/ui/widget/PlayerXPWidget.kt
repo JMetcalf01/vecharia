@@ -21,6 +21,8 @@ class PlayerXPWidget(private val player: Player) : Widget {
     /**
      * Renders the text as shown above.
      *
+     * @author Jonathan Metcalf
+     *
      * @param step the Timestep object
      * @return the text representation of the player's XP
      */

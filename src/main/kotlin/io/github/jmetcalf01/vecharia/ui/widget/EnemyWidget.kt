@@ -19,6 +19,8 @@ class EnemyWidget(private val enemy: Enemy) : Widget {
     /**
      * Renders the text as shown above.
      *
+     * @author Jonathan Metcalf
+     *
      * @param step the Timestep object
      * @return the text representation of the enemy
      */
