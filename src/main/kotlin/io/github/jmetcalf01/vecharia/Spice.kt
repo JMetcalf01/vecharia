@@ -2,8 +2,10 @@ package io.github.jmetcalf01.vecharia
 
 import kotlinx.coroutines.*
 
+@ObsoleteCoroutinesApi
 val scope = newSingleThreadContext("M")
 
+@ObsoleteCoroutinesApi
 fun main() = runBlocking(scope) {
 
 

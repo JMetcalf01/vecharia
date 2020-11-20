@@ -16,6 +16,10 @@ import io.github.jmetcalf01.vecharia.render.Widget
  * @property enemy the enemy being rendered
  */
 class EnemyWidget(private val enemy: Enemy) : Widget {
+
+    private val levelWidget = LevelWidget(enemy)
+    private val hpWidget = HPWidget(enemy)
+
     /**
      * Renders the text as shown above.
      *
@@ -25,6 +29,6 @@ class EnemyWidget(private val enemy: Enemy) : Widget {
      * @return the text representation of the enemy
      */
     override fun render(step: Timestep): Text {
-        return Text(enemy.name, Color.RED).append(" | ", Color.WHITE).append(LevelWidget(enemy)).append(" | ", Color.WHITE).append(HPWidget(enemy))
+        return Text(enemy.name, Color.RED).append(" | ", Color.WHITE).append(levelWidget.render(step)).append(" | ", Color.WHITE).append(hpWidget.render(step))
     }
 }
