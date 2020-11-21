@@ -1,5 +1,11 @@
 package io.github.jmetcalf01.vecharia.entity
 
-abstract class Enemy : Entity() {
-    val name: String = ""
-}
+import io.github.jmetcalf01.vecharia.render.Text
+
+abstract class Enemy(var name: Text) : Entity()
+
+
+/**
+ * SHOULD ONLY BE USED FOR TESTING.
+ */
+class TestEnemy(name: Text) : Enemy(name)

@@ -1,12 +1,10 @@
 package io.github.jmetcalf01.vecharia
 
 import io.github.jmetcalf01.vecharia.entity.Player
-import io.github.jmetcalf01.vecharia.render.TextRenderer
-import io.github.jmetcalf01.vecharia.render.Timestep
+import io.github.jmetcalf01.vecharia.entity.TestEnemy
+import io.github.jmetcalf01.vecharia.render.*
 import io.github.jmetcalf01.vecharia.render.platform.terminal.TerminalTextRenderer
-import io.github.jmetcalf01.vecharia.ui.widget.HPWidget
-import io.github.jmetcalf01.vecharia.ui.widget.LevelWidget
-import io.github.jmetcalf01.vecharia.ui.widget.PlayerXPWidget
+import io.github.jmetcalf01.vecharia.ui.widget.*
 
 fun main() {
     val textRenderer: TextRenderer = TerminalTextRenderer()
@@ -36,4 +34,12 @@ fun main() {
 
     player.currentXP = 67
     textRenderer.draw(xpWidget.render(Timestep()))
+
+    println()
+    val enemy = TestEnemy(Text("Enemy Dude", Color.RED))
+    enemy.health = 30.0F
+    enemy.maxHealth = 50.0F
+    enemy.level = 3
+    val enemyWidget = EnemyWidget(enemy)
+    textRenderer.draw(enemyWidget.render(Timestep()))
 }

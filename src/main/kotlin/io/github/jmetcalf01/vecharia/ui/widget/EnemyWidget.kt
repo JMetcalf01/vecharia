@@ -29,6 +29,7 @@ class EnemyWidget(private val enemy: Enemy) : Widget {
      * @return the text representation of the enemy
      */
     override fun render(step: Timestep): Text {
-        return Text(enemy.name, Color.RED).append(" | ", Color.WHITE).append(levelWidget.render(step)).append(" | ", Color.WHITE).append(hpWidget.render(step))
+        val text = if (enemy.name.str.isEmpty()) Text("ERROR!", Color.RED) else enemy.name
+        return text.append(" | ").append(levelWidget.render(step)).append(" | ").append(hpWidget.render(step))
     }
 }
